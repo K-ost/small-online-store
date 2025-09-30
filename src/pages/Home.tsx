@@ -5,8 +5,12 @@ import Title from "../ui/Title";
 import type { Product } from "../types";
 import Item from "../components/Item";
 import List from "../components/List";
-import Search from "../components/Search";
-import useSearch from "../hooks/useSearch";
+import Select from "../ui/Select";
+import TextInput from "../ui/TextInput";
+import useFilter from "../hooks/useFilter";
+import { FilterController } from "../utils/FilterController";
+
+const filterController = new FilterController();
 
 function Home(): JSX.Element {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,21 +24,23 @@ function Home(): JSX.Element {
     setProducts(data);
   }, [isSuccess, data]);
 
-  const { setSearchValue } = useSearch({
-    data: data ?? [],
-    isSuccess,
+  const { searchHandler, selectHandler } = useFilter({
     setProducts,
+    data: data ?? null,
   });
 
   return (
     <div>
       <Title>Product Catalog</Title>
 
-      <Search
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setSearchValue(e.target.value)
-        }
-      />
+      {isSuccess && (
+        <div className="flex mb-6">
+          <TextInput onChange={searchHandler} />
+          <div className="ml-4">
+            <Select list={filterController.getOptions(data)} onChange={selectHandler} />
+          </div>
+        </div>
+      )}
 
       <List
         isLoading={isLoading}

@@ -8,7 +8,7 @@ import { API_URL } from "../constants";
 function Product(): JSX.Element {
   const { id } = useParams();
 
-  const { data, isSuccess, isLoading } = useGetData<Product>({
+  const { data } = useGetData<Product>({
     keys: ["details"],
     url: API_URL + "/" + id,
   });
