@@ -9,14 +9,15 @@ import Select from "../ui/Select";
 import TextInput from "../ui/TextInput";
 import useFilter from "../hooks/useFilter";
 import { FilterController } from "../utils/FilterController";
+import AlertError from "../ui/AlertError";
 
 const filterController = new FilterController();
 
 function Home(): JSX.Element {
   const [products, setProducts] = useState<Product[]>([]);
-  const { data, isLoading, isSuccess } = useGetData<Product[]>({
+  const { data, isLoading, isSuccess, isError } = useGetData<Product[]>({
     keys: ["products"],
-    url: API_URL + "?limit=6",
+    url: API_URL,
   });
 
   useEffect(() => {
@@ -28,6 +29,8 @@ function Home(): JSX.Element {
     setProducts,
     data: data ?? null,
   });
+
+  if (isError) return <AlertError title="Server error" />;
 
   return (
     <div>

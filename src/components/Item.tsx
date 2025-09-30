@@ -16,8 +16,6 @@ const Item = (props: ItemProps): JSX.Element => {
     state.bookmarks.some((el) => el.id === item.id)
   );
 
-  console.log("Item renders");
-
   return (
     <div className="flex flex-col border border-gray-300 rounded-xl p-4 relative">
       <div className="grow">

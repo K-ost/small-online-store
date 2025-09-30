@@ -6,7 +6,7 @@ type TitleProps = HTMLAttributes<HTMLHeadingElement> & {
 
 const Title = (props: TitleProps): JSX.Element => {
   const { size = "h1" } = props;
-  const classes = "text-4xl font-medium text-blue-900 mb-4";
+  const classes = "text-xl md:text-4xl font-medium text-blue-900 mb-4";
   if (size === "h2") return <h2 className={classes} {...props} />;
   if (size === "h3") return <h3 className={classes} {...props} />;
   return <h1 className={classes} {...props} />;
