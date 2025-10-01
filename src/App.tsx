@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navmenu from "./components/Navmenu";
 import Bookmarks from "./pages/Bookmarks";
-import Product from "./pages/Product";
+import ProductPage from "./pages/Product";
 
 function App(): JSX.Element {
   return (
@@ -12,7 +12,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="/:id" element={<Product />} />
+        <Route path="/:id" element={<ProductPage />} />
       </Routes>
     </div>
   );

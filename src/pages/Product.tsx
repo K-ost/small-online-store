@@ -6,7 +6,7 @@ import type { Product } from "../types";
 import { API_URL } from "../constants";
 import AlertError from "../ui/AlertError";
 
-function Product(): JSX.Element {
+function ProductPage(): JSX.Element {
   const { id } = useParams();
 
   const { data, isSuccess, isLoading, isError } = useGetData<Product>({
@@ -38,4 +38,4 @@ function Product(): JSX.Element {
   );
 }
 
-export default Product;
+export default ProductPage;
