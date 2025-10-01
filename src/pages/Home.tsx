@@ -5,13 +5,9 @@ import Title from "../ui/Title";
 import type { Product } from "../types";
 import Item from "../components/Item";
 import List from "../components/List";
-import Select from "../ui/Select";
-import TextInput from "../ui/TextInput";
 import useFilter from "../hooks/useFilter";
-import { FilterController } from "../utils/FilterController";
 import AlertError from "../ui/AlertError";
-
-const filterController = new FilterController();
+import Filter from "../components/Filter";
 
 function Home(): JSX.Element {
   const [products, setProducts] = useState<Product[]>([]);
@@ -37,12 +33,7 @@ function Home(): JSX.Element {
       <Title>Product Catalog</Title>
 
       {isSuccess && (
-        <div className="flex mb-6">
-          <TextInput onChange={searchHandler} />
-          <div className="ml-4">
-            <Select list={filterController.getOptions(data)} onChange={selectHandler} />
-          </div>
-        </div>
+        <Filter data={data} searchHandler={searchHandler} selectHandler={selectHandler} />
       )}
 
       <List
