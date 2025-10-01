@@ -4,13 +4,15 @@ import { getData } from "../api/getData";
 type useGetDataProps = {
   keys: string[];
   url: string;
+  retry?: boolean;
 };
 
 const useGetData = <T,>(props: useGetDataProps) => {
-  const { keys, url } = props;
+  const { keys, url, retry = true } = props;
   return useQuery({
     queryKey: keys,
     queryFn: () => getData<T>(url),
+    retry,
   });
 };
 

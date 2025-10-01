@@ -5,13 +5,13 @@ import userEvent from "@testing-library/user-event";
 import Home from "../pages/Home";
 
 const productFactory = new ProductFactory();
-const mockedList = productFactory.createProductsList();
+export const mockedList = productFactory.createProductsList();
 
 describe("Products List and Filter", () => {
   beforeAll(() => {
     globalThis.fetch = vi.fn().mockImplementation(() =>
       Promise.resolve({
-        json: () => Promise.resolve(mockedList),
+        json: async () => mockedList,
       })
     );
     render(
@@ -25,8 +25,11 @@ describe("Products List and Filter", () => {
     vi.resetAllMocks();
   });
 
-  it("Getting Data", async () => {
+  it("Loading Data", () => {
     expect(screen.getByText("Loading...")).toBeDefined();
+  });
+
+  it("Getting Data", async () => {
     await waitFor(() => {
       expect(screen.getAllByRole("button", { name: "Buy" })).toBeDefined();
     });
