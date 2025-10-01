@@ -25,5 +25,9 @@ describe("Utils", () => {
       expect(output).toStrictEqual(["all", "clothes", "other"]);
       expect(output).toHaveLength(3);
     });
+    it("Filter by default", () => {
+      const output = filterController.filterProducts(mockedList, "", "all");
+      expect(output).toHaveLength(5);
+    });
   });
 });
