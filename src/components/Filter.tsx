@@ -16,9 +16,13 @@ const Filter = (props: FilterProps): JSX.Element => {
   const { data, searchHandler, selectHandler } = props;
   return (
     <div className="flex mb-6">
-      <TextInput onChange={searchHandler} />
+      <TextInput onChange={searchHandler} aria-label="Filter search" />
       <div className="ml-4">
-        <Select list={filterController.getOptions(data)} onChange={selectHandler} />
+        <Select
+          list={filterController.getOptions(data)}
+          onChange={selectHandler}
+          aria-label="Filter select"
+        />
       </div>
     </div>
   );

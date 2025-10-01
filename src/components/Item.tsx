@@ -24,9 +24,9 @@ const Item = (props: ItemProps): JSX.Element => {
             <img src={item.image} alt="" />
           </Link>
         </div>
-        <div className="text-lg font-semibold mb-4 line-clamp-2">
+        <h2 className="text-lg font-semibold mb-4 line-clamp-2">
           <Link to={`/${item.id}`}>{item.title}</Link>
-        </div>
+        </h2>
       </div>
       <div className="text-base text-gray-500">{item.category}</div>
       <div className="text-2xl font-semibold text-blue-800">${item.price}</div>
