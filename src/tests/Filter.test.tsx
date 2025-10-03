@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import Home from "../pages/Home";
 
 const productFactory = new ProductFactory();
-export const mockedList = productFactory.createProductsList();
+const mockedList = productFactory.createProductsList();
 
 describe("Products List and Filter", () => {
   beforeAll(() => {

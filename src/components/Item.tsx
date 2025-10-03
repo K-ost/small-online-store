@@ -21,11 +21,13 @@ const Item = (props: ItemProps): JSX.Element => {
       <div className="grow">
         <div className="flex align-middle justify-center h-[140px] mb-4">
           <Link to={`/${item.id}`} className="flex">
-            <img src={item.image} alt="" />
+            <img src={item.image} alt={item.title} />
           </Link>
         </div>
         <h2 className="text-lg font-semibold mb-4 line-clamp-2">
-          <Link to={`/${item.id}`}>{item.title}</Link>
+          <Link to={`/${item.id}`} aria-label="Product link">
+            {item.title}
+          </Link>
         </h2>
       </div>
       <div className="text-base text-gray-500">{item.category}</div>
@@ -37,6 +39,7 @@ const Item = (props: ItemProps): JSX.Element => {
         <BookmarkBtn
           active={isBookmarked ? "true" : "false"}
           onClick={() => setBookmark(item)}
+          aria-label="Add to bookamrks"
         />
       </div>
     </div>

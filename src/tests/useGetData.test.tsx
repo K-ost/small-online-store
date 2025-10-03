@@ -2,8 +2,10 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import useGetData from "../hooks/useGetData";
 import { API_URL } from "../constants";
-import { Wrapper } from "./testUtilities";
-import { mockedList } from "./Filter.test";
+import { ProductFactory, Wrapper } from "./testUtilities";
+
+const productFactory = new ProductFactory();
+const mockedList = productFactory.createProductsList();
 
 describe("useGetData hook", () => {
   afterEach(() => {

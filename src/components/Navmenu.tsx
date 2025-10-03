@@ -36,7 +36,9 @@ const Navmenu = (): JSX.Element => {
         <NavmenuLink
           link="/bookmarks"
           name="Bookmarks"
-          badge={<Badge number={bookmarksLength} />}
+          badge={
+            <Badge number={bookmarksLength} role="alert" aria-label="Bookmarks count" />
+          }
         />
       </ul>
     </div>
