@@ -1,6 +1,6 @@
 import { HashRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import type { Product } from "../types";
+import type { CartOrder, Product } from "../types";
 
 const mockQueryClient = new QueryClient();
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
@@ -33,5 +33,8 @@ export class ProductFactory {
       const cat = k < 3 ? this.#categories[0] : this.#categories[1];
       return this.createProduct(k, this.#names[k], cat);
     });
+  }
+  createCartList(): CartOrder[] {
+    return this.createProductsList().map((el) => ({ ...el, count: 1 }));
   }
 }

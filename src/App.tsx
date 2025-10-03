@@ -5,6 +5,7 @@ import Navmenu from "./components/Navmenu";
 
 const Bookmarks = lazy(() => import("./pages/Bookmarks"));
 const ProductPage = lazy(() => import("./pages/Product"));
+const CartPage = lazy(() => import("./pages/Cart"));
 
 function App(): JSX.Element {
   return (
@@ -14,6 +15,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/:id" element={<ProductPage />} />
         </Routes>
       </Suspense>
