@@ -2,6 +2,7 @@ import type { JSX } from "react";
 import { NavLink } from "react-router-dom";
 import Badge from "../ui/Badge";
 import { useBookmarksStore } from "../store/useBookmarksStore";
+import { useCartStore } from "../store/useCartStore";
 
 type NavmenuLinkProps = {
   link: string;
@@ -28,6 +29,9 @@ const NavmenuLink = (props: NavmenuLinkProps): JSX.Element => {
 
 const Navmenu = (): JSX.Element => {
   const bookmarksLength = useBookmarksStore((state) => state.bookmarks.length);
+  const cartLength = useCartStore((state) =>
+    state.orders.reduce((acc, el) => (acc += el.count), 0)
+  );
 
   return (
     <div className="mb-6">
@@ -39,6 +43,11 @@ const Navmenu = (): JSX.Element => {
           badge={
             <Badge number={bookmarksLength} role="alert" aria-label="Bookmarks count" />
           }
+        />
+        <NavmenuLink
+          link="/cart"
+          name="Cart"
+          badge={<Badge number={cartLength} role="alert" aria-label="Cart's count" />}
         />
       </ul>
     </div>

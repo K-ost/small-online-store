@@ -4,6 +4,7 @@ import Button from "../ui/Button";
 import { useBookmarksStore } from "../store/useBookmarksStore";
 import BookmarkBtn from "../ui/BookmarkBtn";
 import { Link } from "react-router-dom";
+import { useCartStore } from "../store/useCartStore";
 
 type ItemProps = {
   item: Product;
@@ -11,6 +12,7 @@ type ItemProps = {
 
 const Item = (props: ItemProps): JSX.Element => {
   const { item } = props;
+  const setOrder = useCartStore((state) => state.setOrder);
   const setBookmark = useBookmarksStore((state) => state.setBookmark);
   const isBookmarked = useBookmarksStore((state) =>
     state.bookmarks.some((el) => el.id === item.id)
@@ -33,7 +35,9 @@ const Item = (props: ItemProps): JSX.Element => {
       <div className="text-base text-gray-500">{item.category}</div>
       <div className="text-2xl font-semibold text-blue-800">${item.price}</div>
       <div className="flex mt-2">
-        <Button fullwidth="true">Buy</Button>
+        <Button fullwidth="true" onClick={() => setOrder(item)}>
+          Buy
+        </Button>
       </div>
       <div className="absolute right-2 top-2">
         <BookmarkBtn
