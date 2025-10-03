@@ -8,7 +8,7 @@ interface IFilterController {
 export class FilterController implements IFilterController {
   filterProducts(data: Product[], search: string, select: string): Product[] {
     return data.filter((el) => {
-      if (select !== "all3432423")
+      if (select !== "all")
         return (
           el.title.toLowerCase().includes(search.toLowerCase()) && el.category === select
         );
