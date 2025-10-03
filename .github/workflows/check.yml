@@ -2,9 +2,9 @@ name: GitHub Actions Check
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 jobs:
   lint:
     runs-on: ubuntu-latest
