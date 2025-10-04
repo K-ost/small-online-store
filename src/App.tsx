@@ -1,7 +1,7 @@
-import { lazy, Suspense, type JSX } from "react";
+import { lazy, type JSX } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Navmenu from "./components/Navmenu";
+import Layout from "./components/Layout";
 
 const Bookmarks = lazy(() => import("./pages/Bookmarks"));
 const ProductPage = lazy(() => import("./pages/Product"));
@@ -9,17 +9,14 @@ const CartPage = lazy(() => import("./pages/Cart"));
 
 function App(): JSX.Element {
   return (
-    <div className="container m-auto px-4 py-4">
-      <Navmenu />
-      <Suspense fallback={<div>Loading page...</div>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/:id" element={<ProductPage />} />
-        </Routes>
-      </Suspense>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index path="/" element={<Home />} />
+        <Route path="/bookmarks" element={<Bookmarks />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/:id" element={<ProductPage />} />
+      </Route>
+    </Routes>
   );
 }
 
