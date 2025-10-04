@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -24,6 +24,7 @@ describe("App", () => {
 
   afterEach(() => {
     vi.resetAllMocks();
+    cleanup();
   });
 
   it("App renders", async () => {
@@ -31,8 +32,8 @@ describe("App", () => {
   });
 
   it("Moving to bookmarks page when it's empty", async () => {
-    const navLinks = screen.getAllByRole("link", { name: "Bookmarks" });
-    await userEvent.click(navLinks[1]);
+    const navLink = screen.getByRole("link", { name: "Bookmarks" });
+    await userEvent.click(navLink);
     await waitFor(() => {
       expect(
         screen.getByText("Your haven't added anything to your bookmarks list yet.")
@@ -41,10 +42,11 @@ describe("App", () => {
   });
 
   it("Adding bookmark", async () => {
-    const navLinks = screen.getAllByRole("button", { name: "Add to bookamrks" });
-    await userEvent.click(navLinks[0]);
-    const counts = screen.getAllByRole("alert", { name: "Bookmarks count" });
-    expect(counts[0].innerHTML).toStrictEqual("1");
+    await userEvent.click(screen.getByRole("link", { name: "Home" }));
+    const bookmarkLinks = screen.getAllByRole("button", { name: "Add to bookamrks" });
+    await userEvent.click(bookmarkLinks[0]);
+    const counts = screen.getByRole("alert", { name: "Bookmarks count" });
+    expect(counts.innerHTML).toStrictEqual("1");
   });
 
   it("Going to detail page", async () => {
