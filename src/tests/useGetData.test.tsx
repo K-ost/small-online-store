@@ -1,7 +1,8 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import useGetData from "../hooks/useGetData";
+
 import { API_URL } from "../constants";
+import useGetData from "../hooks/useGetData";
 import { ProductFactory, Wrapper } from "./testUtilities";
 
 const productFactory = new ProductFactory();

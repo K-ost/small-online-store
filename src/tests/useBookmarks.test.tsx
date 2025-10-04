@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
-import { useBookmarksStore } from "../store/useBookmarksStore";
 import { act, renderHook } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+
+import { useBookmarksStore } from "../store/useBookmarksStore";
 import { ProductFactory } from "./testUtilities";
 
 const productFactory = new ProductFactory();

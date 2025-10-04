@@ -1,10 +1,11 @@
 import { type JSX } from "react";
-import Title from "../ui/Title";
-import { useBookmarksStore } from "../store/useBookmarksStore";
-import List from "../components/List";
+
 import Item from "../components/Item";
-import Button from "../ui/Button";
 import Layout from "../components/Layout";
+import List from "../components/List";
+import { useBookmarksStore } from "../store/useBookmarksStore";
+import Button from "../ui/Button";
+import Title from "../ui/Title";
 
 function Bookmarks(): JSX.Element {
   const bookmarks = useBookmarksStore((state) => state.bookmarks);

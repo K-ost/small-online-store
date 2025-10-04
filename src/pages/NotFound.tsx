@@ -1,7 +1,8 @@
 import type { JSX } from "react";
 import { Link } from "react-router-dom";
-import Title from "../ui/Title";
+
 import Layout from "../components/Layout";
+import Title from "../ui/Title";
 
 function NotFound(): JSX.Element {
   return (

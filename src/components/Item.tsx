@@ -1,10 +1,11 @@
-import { memo, type JSX } from "react";
-import type { Product } from "../types";
-import Button from "../ui/Button";
-import { useBookmarksStore } from "../store/useBookmarksStore";
-import BookmarkBtn from "../ui/BookmarkBtn";
+import { type JSX,memo } from "react";
 import { Link } from "react-router-dom";
+
+import { useBookmarksStore } from "../store/useBookmarksStore";
 import { useCartStore } from "../store/useCartStore";
+import type { Product } from "../types";
+import BookmarkBtn from "../ui/BookmarkBtn";
+import Button from "../ui/Button";
 
 type ItemProps = {
   item: Product;

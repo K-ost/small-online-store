@@ -1,8 +1,9 @@
 import type { JSX } from "react";
-import TextInput from "../ui/TextInput";
-import Select from "../ui/Select";
-import { FilterController } from "../utils/FilterController";
+
 import type { Product } from "../types";
+import Select from "../ui/Select";
+import TextInput from "../ui/TextInput";
+import { FilterController } from "../utils/FilterController";
 
 const filterController = new FilterController();
 

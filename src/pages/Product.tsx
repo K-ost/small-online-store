@@ -1,11 +1,12 @@
 import type { JSX } from "react";
 import { useParams } from "react-router-dom";
-import Title from "../ui/Title";
+
+import Layout from "../components/Layout";
+import { API_URL } from "../constants";
 import useGetData from "../hooks/useGetData";
 import type { Product } from "../types";
-import { API_URL } from "../constants";
 import AlertError from "../ui/AlertError";
-import Layout from "../components/Layout";
+import Title from "../ui/Title";
 
 function ProductPage(): JSX.Element {
   const { id } = useParams();

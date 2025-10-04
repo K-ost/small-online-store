@@ -1,4 +1,4 @@
-import { Suspense, type JSX } from "react";
+import { type JSX,Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 const SuspenseLayout = (): JSX.Element => {

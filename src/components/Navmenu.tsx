@@ -1,8 +1,9 @@
 import type { JSX } from "react";
 import { NavLink } from "react-router-dom";
-import Badge from "../ui/Badge";
+
 import { useBookmarksStore } from "../store/useBookmarksStore";
 import { useCartStore } from "../store/useCartStore";
+import Badge from "../ui/Badge";
 
 type NavmenuLinkProps = {
   link: string;

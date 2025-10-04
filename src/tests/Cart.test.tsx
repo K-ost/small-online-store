@@ -1,9 +1,10 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, render, renderHook, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import CartPage from "../pages/Cart";
+import { useCartStore } from "../store/useCartStore";
 import { CartUtils } from "../utils/CartUtils";
 import { ProductFactory, Wrapper } from "./testUtilities";
-import { useCartStore } from "../store/useCartStore";
-import CartPage from "../pages/Cart";
 
 const cartUtils = new CartUtils();
 const productFactory = new ProductFactory();

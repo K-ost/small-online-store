@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
+
 import type { Product } from "../types";
 
 type BookmarksState = {

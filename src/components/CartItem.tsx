@@ -1,6 +1,7 @@
 import type { JSX } from "react";
-import type { CartOrder } from "../types";
+
 import { useCartStore } from "../store/useCartStore";
+import type { CartOrder } from "../types";
 import Button from "../ui/Button";
 
 type CartItemProps = {

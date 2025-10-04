@@ -1,14 +1,15 @@
-import { useEffect, useState, type JSX } from "react";
-import { API_URL } from "../constants";
-import useGetData from "../hooks/useGetData";
-import Title from "../ui/Title";
-import type { Product } from "../types";
-import Item from "../components/Item";
-import List from "../components/List";
-import useFilter from "../hooks/useFilter";
-import AlertError from "../ui/AlertError";
+import { type JSX,useEffect, useState } from "react";
+
 import Filter from "../components/Filter";
+import Item from "../components/Item";
 import Layout from "../components/Layout";
+import List from "../components/List";
+import { API_URL } from "../constants";
+import useFilter from "../hooks/useFilter";
+import useGetData from "../hooks/useGetData";
+import type { Product } from "../types";
+import AlertError from "../ui/AlertError";
+import Title from "../ui/Title";
 
 function Home(): JSX.Element {
   const [products, setProducts] = useState<Product[]>([]);

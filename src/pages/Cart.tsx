@@ -1,10 +1,11 @@
 import type { JSX } from "react";
-import Title from "../ui/Title";
+
+import CartItem from "../components/CartItem";
+import Layout from "../components/Layout";
 import { useCartStore } from "../store/useCartStore";
 import Button from "../ui/Button";
-import CartItem from "../components/CartItem";
+import Title from "../ui/Title";
 import { CartUtils } from "../utils/CartUtils";
-import Layout from "../components/Layout";
 
 const cartUtils = new CartUtils();
 

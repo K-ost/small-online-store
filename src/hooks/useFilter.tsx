@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import type { Product } from "../types";
 import { FilterController } from "../utils/FilterController";
 

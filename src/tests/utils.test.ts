@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 import { FilterController } from "../utils/FilterController";
 import { ProductFactory } from "./testUtilities";
 

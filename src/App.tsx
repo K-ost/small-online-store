@@ -1,7 +1,8 @@
-import { lazy, type JSX } from "react";
+import { type JSX, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+
 import SuspenseLayout from "./components/SuspenseLayout";
+import Home from "./pages/Home";
 
 const Bookmarks = lazy(() => import("./pages/Bookmarks"));
 const ProductPage = lazy(() => import("./pages/Product"));

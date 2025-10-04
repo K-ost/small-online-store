@@ -1,4 +1,5 @@
 import { type JSX } from "react";
+
 import Navmenu from "./Navmenu";
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
