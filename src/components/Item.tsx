@@ -1,4 +1,4 @@
-import { type JSX,memo } from "react";
+import { type JSX, memo } from "react";
 import { Link } from "react-router-dom";
 
 import { useBookmarksStore } from "../store/useBookmarksStore";
@@ -36,7 +36,11 @@ const Item = (props: ItemProps): JSX.Element => {
       <div className="text-base text-gray-500">{item.category}</div>
       <div className="text-2xl font-semibold text-blue-800">${item.price}</div>
       <div className="flex mt-2">
-        <Button fullwidth="true" onClick={() => setOrder(item)}>
+        <Button
+          fullwidth="true"
+          onClick={() => setOrder(item)}
+          aria-label={`buy-${item.title}`}
+        >
           Buy
         </Button>
       </div>

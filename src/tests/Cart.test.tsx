@@ -1,6 +1,15 @@
-import { act, render, renderHook, screen } from "@testing-library/react";
+import {
+  act,
+  cleanup,
+  render,
+  renderHook,
+  screen,
+  waitFor,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+import App from "../App";
 import CartPage from "../pages/Cart";
 import { useCartStore } from "../store/useCartStore";
 import { CartUtils } from "../utils/CartUtils";
@@ -9,6 +18,7 @@ import { ProductFactory, Wrapper } from "./testUtilities";
 const cartUtils = new CartUtils();
 const productFactory = new ProductFactory();
 const mocketCart = productFactory.createCartList();
+const mocketList = productFactory.createProductsList();
 
 describe("Cart", () => {
   describe("Cart Utils", () => {
@@ -59,6 +69,7 @@ describe("Cart", () => {
   describe("Integration tests", () => {
     afterEach(() => {
       vi.clearAllMocks();
+      cleanup();
     });
 
     it("Cart is empty", () => {
@@ -67,6 +78,36 @@ describe("Cart", () => {
           <CartPage />
         </Wrapper>
       );
+      expect(screen.getByText("Your cart is empty yet.")).toBeDefined();
+    });
+
+    it("Placing order to cart", async () => {
+      globalThis.fetch = vi.fn().mockImplementation(async () => ({
+        json: async () => mocketList,
+      }));
+      render(
+        <Wrapper>
+          <App />
+        </Wrapper>
+      );
+      await waitFor(() => {
+        expect(screen.getByRole("button", { name: "buy-Shirt" })).toBeDefined();
+      });
+      await userEvent.click(screen.getByRole("button", { name: "buy-Shirt" }));
+      expect(screen.getByRole("alert", { name: "Cart's count" })).toBeDefined();
+      expect(screen.getByRole("alert", { name: "Cart's count" }).innerHTML).toBe("1");
+    });
+
+    it("Removing Cart", async () => {
+      render(
+        <Wrapper>
+          <CartPage />
+        </Wrapper>
+      );
+      const resetCart = screen.getByRole("button", { name: "Remove All Products" });
+      expect(screen.getByText(/Total price:/i)).toBeDefined();
+      expect(resetCart).toBeDefined();
+      await userEvent.click(resetCart);
       expect(screen.getByText("Your cart is empty yet.")).toBeDefined();
     });
   });
