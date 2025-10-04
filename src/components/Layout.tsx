@@ -1,14 +1,11 @@
-import { Suspense, type JSX } from "react";
-import { Outlet } from "react-router-dom";
+import { type JSX } from "react";
 import Navmenu from "./Navmenu";
 
-const Layout = (): JSX.Element => {
+const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <div className="container m-auto px-4 py-4">
       <Navmenu />
-      <Suspense fallback={<div>Loading page...</div>}>
-        <Outlet />
-      </Suspense>
+      {children}
     </div>
   );
 };

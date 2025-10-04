@@ -22,12 +22,12 @@ const Item = (props: ItemProps): JSX.Element => {
     <div className="flex flex-col border border-gray-300 rounded-xl p-4 relative">
       <div className="grow">
         <div className="flex align-middle justify-center h-[140px] mb-4">
-          <Link to={`/${item.id}`} className="flex">
+          <Link to={`/products/${item.id}`} className="flex">
             <img src={item.image} alt={item.title} />
           </Link>
         </div>
         <h2 className="text-lg font-semibold mb-4 line-clamp-2">
-          <Link to={`/${item.id}`} aria-label="Product link">
+          <Link to={`/products/${item.id}`} aria-label="Product link">
             {item.title}
           </Link>
         </h2>

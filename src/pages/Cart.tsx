@@ -4,6 +4,7 @@ import { useCartStore } from "../store/useCartStore";
 import Button from "../ui/Button";
 import CartItem from "../components/CartItem";
 import { CartUtils } from "../utils/CartUtils";
+import Layout from "../components/Layout";
 
 const cartUtils = new CartUtils();
 
@@ -12,7 +13,7 @@ function CartPage(): JSX.Element {
   const removeAllOrders = useCartStore((state) => state.removeAllOrders);
 
   return (
-    <div>
+    <Layout>
       <Title>Cart</Title>
       {!orders.length && <div>Your cart is empty yet.</div>}
 
@@ -50,7 +51,7 @@ function CartPage(): JSX.Element {
           </tfoot>
         </table>
       )}
-    </div>
+    </Layout>
   );
 }
 

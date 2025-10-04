@@ -5,6 +5,7 @@ import useGetData from "../hooks/useGetData";
 import type { Product } from "../types";
 import { API_URL } from "../constants";
 import AlertError from "../ui/AlertError";
+import Layout from "../components/Layout";
 
 function ProductPage(): JSX.Element {
   const { id } = useParams();
@@ -15,7 +16,7 @@ function ProductPage(): JSX.Element {
   });
 
   return (
-    <div>
+    <Layout>
       {isLoading && <div>Loading...</div>}
 
       {isSuccess && (
@@ -37,7 +38,7 @@ function ProductPage(): JSX.Element {
       )}
 
       {isError && <AlertError title="Server error" />}
-    </div>
+    </Layout>
   );
 }
 

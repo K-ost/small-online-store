@@ -8,6 +8,7 @@ import List from "../components/List";
 import useFilter from "../hooks/useFilter";
 import AlertError from "../ui/AlertError";
 import Filter from "../components/Filter";
+import Layout from "../components/Layout";
 
 function Home(): JSX.Element {
   const [products, setProducts] = useState<Product[]>([]);
@@ -29,7 +30,7 @@ function Home(): JSX.Element {
   if (isError) return <AlertError title="Server error" />;
 
   return (
-    <div>
+    <Layout>
       <Title>Product Catalog</Title>
 
       {isSuccess && (
@@ -42,7 +43,7 @@ function Home(): JSX.Element {
           <Item key={product.id} item={product} />
         ))}
       />
-    </div>
+    </Layout>
   );
 }
 

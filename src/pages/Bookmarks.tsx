@@ -4,13 +4,14 @@ import { useBookmarksStore } from "../store/useBookmarksStore";
 import List from "../components/List";
 import Item from "../components/Item";
 import Button from "../ui/Button";
+import Layout from "../components/Layout";
 
 function Bookmarks(): JSX.Element {
   const bookmarks = useBookmarksStore((state) => state.bookmarks);
   const resetBookmarks = useBookmarksStore((state) => state.resetBookmarks);
 
   return (
-    <div>
+    <Layout>
       <Title>Bookmarks</Title>
       {!bookmarks.length && (
         <div>Your haven't added anything to your bookmarks list yet.</div>
@@ -30,7 +31,7 @@ function Bookmarks(): JSX.Element {
           <Item key={el.id} item={el} />
         ))}
       />
-    </div>
+    </Layout>
   );
 }
 
